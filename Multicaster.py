@@ -66,14 +66,15 @@ class Multicaster(object):
         else:
             return False
 
-    def send(self, callback, *args, **kwargs):
+    def send(self, callback=None, *args, **kwargs):
         for consumer in self.__consumers:
             # a hack (entry=entry) to avoid lexical passing of object
             # see: http://stackoverflow.com/questions/233673
             def run(jobId=None, consumer=consumer):
                 try:
                     result = consumer.consume(*args, **kwargs)
-                    callback(result)
+                    if callback != None:
+                        callback(result)
                 except Exception as e:
                     logging.error("Exception at consumer: %s" % str(e))
                     callback(e)
