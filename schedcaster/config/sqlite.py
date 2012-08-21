@@ -1,10 +1,10 @@
 import sqlite3 as sqlite
 import types
 import threading
-import Scheduler
+import schedcaster.scheduler as Scheduler
 
 
-class SchedulerConfigSQLite(object):
+class Config(object):
     '''Config provider for Scheduler service, that uses SQLite to store
        schedules'''
     # should be used, because sqlite3 connections are not thread-safe

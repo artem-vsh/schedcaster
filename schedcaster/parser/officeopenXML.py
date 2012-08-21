@@ -6,7 +6,7 @@ Created on Thu Aug  2 19:16:58 2012
 """
 
 from openpyxl import load_workbook
-import Scheduler
+import schedcaster
 import hashlib
 
 
@@ -26,7 +26,8 @@ def parseWorkbook(wb, spec):
         rows = sheet.get_highest_row()
         for i in range(1, rows + 1):
             rowName = str(i)
-            entry = Scheduler.Entry(state=Scheduler.STATE_ONESHOT,
+            entry = schedcaster.scheduler.Entry(
+                                    state=schedcaster.scheduler.STATE_ONESHOT,
                                     handler='post')
 
             poisoned = False  # indicates if row cannot be parsed

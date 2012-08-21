@@ -5,20 +5,20 @@ Created on Tue Aug  7 18:47:08 2012
 @author: avsh
 """
 
-import vkontakte as vk
+import vkontakte as api
 
 
-class ConsumerVK(object):
+class Consumer(object):
     def __init__(self, apiId=None, apiSecret=None, token=None, owner=None):
         self.owner = owner
 
         # try to default to the given token
         self.token = token
         if self.token == None:
-            self.api = vk.API(apiId, apiSecret)
+            self.api = api.API(apiId, apiSecret)
             self.token = self.api.token
         else:
-            self.api = vk.API(token=token)
+            self.api = api.API(token=token)
 
     def consume(self, post, attachments=None):
         args = {'message': post}

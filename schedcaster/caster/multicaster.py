@@ -10,7 +10,7 @@ import logging
 import queue
 
 
-class Multicaster(object):
+class Caster(object):
     def __init__(self, maxThreads=4):
         self.__maxThreads = maxThreads
         self.__consumers = []
